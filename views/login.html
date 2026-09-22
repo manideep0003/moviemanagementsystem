@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - MovieBox</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="login-page">
+  <div class="login-box">
+    <div class="login-logo">Movie<span>Box</span></div>
+    <h1>Login</h1>
+    <p>Sign in to manage your movie collection.</p>
+
+    <form id="loginForm">
+      <label>Username</label>
+      <input id="username" type="text" placeholder="Enter username" required>
+
+      <label>Password</label>
+      <input id="password" type="password" placeholder="Enter password" required>
+
+      <p id="loginMessage" class="login-error"></p>
+
+      <button class="btn primary full" type="submit">Login</button>
+    </form>
+
+    <div class="demo-login">
+      Demo login: <strong>admin</strong> / <strong>admin123</strong>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../js/apiConfig.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>
+    if (isLoggedIn()) {
+      window.location.href = "index.html";
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+      const loginMessage = document.getElementById("loginMessage");
+
+      try {
+        const response = await axios.get(API_BASE_URL + "/users", {
+          params: { username: username, password: password }
+        });
+
+        if (response.data.length > 0) {
+          sessionStorage.setItem("loggedIn", "true");
+          sessionStorage.setItem("username", username);
+          window.location.href = "index.html";
+        } else {
+          loginMessage.textContent = "Invalid username or password.";
+        }
+      } catch (error) {
+        loginMessage.textContent = "Server is not running. Start JSON Server first.";
+      }
+    });
+  </script>
+</body>
+</html>

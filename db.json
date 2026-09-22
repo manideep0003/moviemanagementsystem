@@ -1,0 +1,71 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Interstellar",
+      "genre": "Sci-Fi",
+      "releaseYear": 2014,
+      "language": "English",
+      "rating": 8.7,
+      "duration": "169 min",
+      "description": "A team of explorers travels through a wormhole in space to find a new home for humanity.",
+      "poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+      "favorite": true
+    },
+    {
+      "id": 2,
+      "title": "RRR",
+      "genre": "Action",
+      "releaseYear": 2022,
+      "language": "Telugu",
+      "rating": 8,
+      "duration": "187 min",
+      "description": "Two revolutionaries from different backgrounds join together against British rule.",
+      "poster": "https://imgs.search.brave.com/RR27VqyMG_Rv6HIBB1PwURXJBbhsHQSIIzy9A5WRS2Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvZmVhdHVy/ZWQvcnJyLXBpY3R1/cmVzLWM0NHY2bWcx/Z281Mmx1djYuanBn",
+      "favorite": false
+    },
+    {
+      "id": 3,
+      "title": "The Dark Knight",
+      "genre": "Action",
+      "releaseYear": 2008,
+      "language": "English",
+      "rating": 9,
+      "duration": "152 min",
+      "description": "Batman faces a criminal mastermind who creates chaos across Gotham City.",
+      "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      "favorite": false
+    },
+    {
+      "id": 4,
+      "title": "C/O Kancharapalem",
+      "genre": "Drama",
+      "releaseYear": 2018,
+      "language": "Telugu",
+      "rating": 8.8,
+      "duration": "152 min",
+      "description": "Four stories of love unfold across different generations in a small town.",
+      "poster": "https://imgs.search.brave.com/pyNrgYdkPJ0IzCs22M2bfWPGYNWS0zifLbOg1V3q6bg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1QlpqWXlNMlV3/TUdRdE1qSTRZUzAw/WTJVNExUbGxPV0l0/WWpJek9EbGhaVGhs/TURjMlhrRXlYa0Zx/Y0djQC5qcGc",
+      "favorite": false
+    },
+    {
+      "title": "The Paradise",
+      "genre": "Drama",
+      "releaseYear": 2026,
+      "language": "Telugu",
+      "rating": 9,
+      "duration": "176",
+      "description": "In 1980s Secunderabad, a marginalized tribe battles discrimination and fights for citizenship under an unexpected leader's guidance, challenging systemic oppression.",
+      "poster": "https://imgs.search.brave.com/5DQafViaQjtgujF-SytG4Q4jnIoQBtuWUiPUGF3B0Ok/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/NS5ib2xseXdvb2Ro/dW5nYW1hLmluL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDI2LzA4/L1RoZVBhcmFkaXNl/MTExLTMyMng0ODMu/anBn",
+      "favorite": false,
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin123"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Poster images can be stored here if you do not want to use image URLs.

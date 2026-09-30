@@ -1,26 +1,51 @@
-
-const jsonServer = require('json-server');
-const path = require('path');
+const jsonServer = require("json-server");
+const express = require("express");
+const path = require("path");
 
 const server = jsonServer.create();
-const router = jsonServer.router(path.join(__dirname, 'db.json'));
 
-const middlewares = jsonServer.defaults({
-  static: __dirname
+const router = jsonServer.router(
+    path.join(__dirname, "db.json")
+);
+
+// Homepage
+server.get("/", (req, res) => {
+    res.redirect("/login.html");
 });
 
-const port = Number(process.env.PORT) || 3000;
+// Login and details pages
+server.use(
+    express.static(path.join(__dirname, "views"))
+);
 
-// Serve frontend files and enable default middleware
-server.use(middlewares);
+// Serve the main movie page from the project root
+server.get("/index.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
 
-// Parse JSON request bodies
-server.use(jsonServer.bodyParser);
+// Serve CSS
+server.use(
+    "/CSS",
+    express.static(path.join(__dirname, "CSS"))
+);
 
-// API routes
+// Serve JavaScript
+server.use(
+    "/js",
+    express.static(path.join(__dirname, "js"))
+);
+
+// Serve assets
+server.use(
+    "/assets",
+    express.static(path.join(__dirname, "assets"))
+);
+
+// JSON Server API
 server.use(router);
 
-// Start server
-server.listen(port, '0.0.0.0', () => {
-  console.log(`Movie Management System listening on port ${port}`);
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, "0.0.0.0", () => {
+    console.log(`Movie Management System running on port ${PORT}`);
 });

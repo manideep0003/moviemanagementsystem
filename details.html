@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Details</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="index.html" class="logo">Movie<span>Box</span></a>
+      <div class="nav-actions">
+        <a href="index.html" class="nav-link">← Back to Movies</a>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container details-page">
+    <div id="details"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/apiConfig.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    requireLogin();
+    document.getElementById("logoutBtn").addEventListener("click", logout);
+  </script>
+  <script src="js/service/movieService.js"></script>
+  <script src="js/utils.js"></script>
+  <script>
+    async function loadDetails() {
+      const id = new URLSearchParams(window.location.search).get("id");
+      const box = document.getElementById("details");
+
+      if (!id) {
+        box.innerHTML = "<p class='message'>Movie not found.</p>";
+        return;
+      }
+
+      try {
+        const movie = await getMovieById(id);
+        box.innerHTML = `
+          <div class="details-card">
+            <img class="details-poster" src="${safeImage(movie.poster)}" alt="${escapeHtml(movie.title)}">
+            <div class="details-info">
+              <p class="small-title">MOVIE DETAILS</p>
+              <h1>${escapeHtml(movie.title)}</h1>
+              <div class="tags">
+                <span>${escapeHtml(movie.genre)}</span>
+                <span>${movie.releaseYear}</span>
+                <span>${escapeHtml(movie.language)}</span>
+              </div>
+              <p class="rating-big">★ ${movie.rating}/10</p>
+              <p><strong>Duration:</strong> ${escapeHtml(movie.duration)}</p>
+              <p class="description">${escapeHtml(movie.description)}</p>
+              <button class="btn primary" onclick="toggleFavorite(${movie.id}, ${movie.favorite})">
+                ${movie.favorite ? "★ Remove from Favorites" : "☆ Add to Favorites"}
+              </button>
+            </div>
+          </div>
+        `;
+      } catch (error) {
+        box.innerHTML = "<p class='message'>Could not load movie details.</p>";
+      }
+    }
+
+    async function toggleFavorite(id, currentValue) {
+      await updateMovie(id, { favorite: !currentValue });
+      loadDetails();
+    }
+
+    loadDetails();
+  </script>
+</body>
+</html>

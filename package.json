@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Simple Movie Management System using HTML, CSS, JavaScript, Axios, DOM and JSON Server",
   "scripts": {
-    "server": "json-server --watch db.json --port 3000"
-  },
+  "start": "json-server --watch db.json --port 3000",
+  "server": "json-server --watch db.json --port 3000"
+},
   "dependencies": {
     "json-server": "^0.17.4"
   }
